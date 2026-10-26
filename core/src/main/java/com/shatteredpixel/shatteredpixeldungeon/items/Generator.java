@@ -237,19 +237,19 @@ public class Generator {
 		MIS_T4  ( 0, 0, MissileWeapon.class ),
 		MIS_T5  ( 0, 0, MissileWeapon.class ),
 		
-		WAND	( 1, 1, Wand.class ),
+		WAND	( 1, 9, Wand.class ),
 		RING	( 1, 0, Ring.class ),
-		ARTIFACT( 0, 1, Artifact.class),
+		ARTIFACT( 0, 5, Artifact.class),
 		
-		FOOD	( 0, 0, Food.class ),
+		FOOD	( 4, 0, Food.class ),
 		
-		POTION	( 8, 8, Potion.class ),
+		POTION	( 15, 8, Potion.class ),
 		SEED	( 1, 1, Plant.Seed.class ),
 		
 		SCROLL	( 8, 8, Scroll.class ),
-		STONE   ( 1, 1, Runestone.class),
+		STONE   ( 4, 1, Runestone.class),
 		
-		GOLD	( 10, 10,   Gold.class );
+		GOLD	( 15, 10,   Gold.class );
 		
 		public Class<?>[] classes;
 
@@ -487,7 +487,7 @@ public class Generator {
 					DuelistArmor.class,
 					ClericArmor.class
 			};
-			ARMOR.probs = new float[]{ 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0 };
+			ARMOR.probs = new float[]{ 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0 };
 			
 			//see Generator.randomMissile
 			MISSILE.classes = new Class<?>[]{};
@@ -538,7 +538,7 @@ public class Generator {
 					Food.class,
 					Pasty.class,
 					MysteryMeat.class };
-			FOOD.defaultProbs = new float[]{ 4, 1, 0 };
+			FOOD.defaultProbs = new float[]{ 9, 5, 1 };
 			FOOD.probs = FOOD.defaultProbs.clone();
 			
 			RING.classes = new Class<?>[]{

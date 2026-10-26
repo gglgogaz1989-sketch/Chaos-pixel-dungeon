@@ -61,10 +61,10 @@ public class EtherealChains extends Artifact {
 	{
 		image = ItemSpriteSheet.ARTIFACT_CHAINS;
 
-		levelCap = 5;
+		levelCap = 20;
 		exp = 0;
 
-		charge = 5;
+		charge = 2;
 
 		defaultAction = AC_CAST;
 		usesTargeting = true;

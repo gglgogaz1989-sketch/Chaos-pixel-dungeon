@@ -86,14 +86,14 @@ public class SewerLevel extends RegularLevel {
 	
 	@Override
 	protected int standardRooms(boolean forceMax) {
-		if (forceMax) return 6;
+		if (forceMax) return 15;
 		//4 to 6, average 5
 		return 4+Random.chances(new float[]{1, 3, 1});
 	}
 	
 	@Override
 	protected int specialRooms(boolean forceMax) {
-		if (forceMax) return 2;
+		if (forceMax) return 3;
 		//1 to 2, average 1.8
 		return 1+Random.chances(new float[]{1, 4});
 	}

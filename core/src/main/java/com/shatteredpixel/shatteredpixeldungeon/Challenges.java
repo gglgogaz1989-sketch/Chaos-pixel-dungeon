@@ -36,9 +36,10 @@ public class Challenges {
 	public static final int NO_SCROLLS		    = 64;
 	public static final int CHAMPION_ENEMIES	= 128;
 	public static final int STRONGER_BOSSES 	= 256;
+	public static final int CURSED_WEAPONS = 512;
 
-	public static final int MAX_VALUE           = 511;
-	public static final int MAX_CHALS           = 9;
+	public static final int MAX_VALUE           = 1023;
+	public static final int MAX_CHALS           = 10;
 
 	public static final String[] NAME_IDS = {
 			"champion_enemies",
@@ -49,7 +50,8 @@ public class Challenges {
 			"no_herbalism",
 			"swarm_intelligence",
 			"darkness",
-			"no_scrolls"
+			"no_scrolls",
+		    "cursed_weapons"
 	};
 
 	public static final int[] MASKS = {

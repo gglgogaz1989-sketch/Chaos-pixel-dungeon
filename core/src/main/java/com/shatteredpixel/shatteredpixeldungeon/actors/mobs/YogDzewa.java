@@ -76,7 +76,7 @@ public class YogDzewa extends Mob {
 		//so that allies can attack it. States are never actually used.
 		state = HUNTING;
 
-		viewDistance = 12;
+		viewDistance = 14;
 
 		properties.add(Property.BOSS);
 		properties.add(Property.IMMOVABLE);

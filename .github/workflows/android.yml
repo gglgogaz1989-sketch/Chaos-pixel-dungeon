@@ -3,17 +3,20 @@ name: Build SPD Mod APK
 on:
   push:
     branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
   workflow_dispatch:
 
 jobs:
   build:
+    name: Build Android APK
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up JDK 17
+      - name: Set up Java 17
         uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
@@ -23,11 +26,13 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Build APK
-        run: ./gradlew assembleDebug
+      # Собираем именно Debug-версию, чтобы APK подставил встроенную тестовую подпись
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug --stacktrace
 
-      - name: Upload APK Artifact
+      - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: spd-mod-release
-          path: android/build/outputs/apk/release/*.apk
+          name: SPD-Mod-Debug-APK
+          path: android/build/outputs/apk/debug/*.apk
+          retention-days: 7

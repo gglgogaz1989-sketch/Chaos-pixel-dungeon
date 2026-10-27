@@ -1,51 +1,59 @@
-
 name: Build SPD APK
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
-      - master
+workflow_dispatch:
+push:
+branches:
+- main
+- master
 
 permissions:
-  contents: read
+contents: read
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+build:
+runs-on: ubuntu-latest
 
-    steps:
-      - name: Download source
-        uses: actions/checkout@v4
+steps:
+  - name: Download source
+    uses: actions/checkout@v4
 
-      - name: Install Java
-        uses: actions/setup-java@v5
-        with:
-          distribution: temurin
-          java-version: '17'
-          cache: gradle
+  - name: Install Java
+    uses: actions/setup-java@v5
+    with:
+      distribution: temurin
+      java-version: '17'
+      cache: gradle
 
-      - name: Grant Gradle permission
-        run: |
-          if [ -f ./gradlew ]; then
-            chmod +x ./gradlew
-          fi
+  - name: Check Gradle Wrapper
+    run: |
+      if [ ! -f ./gradlew ]; then
+        echo "ERROR: gradlew not found in repository root"
+        exit 1
+      fi
 
-      - name: Build Android APK
-        run: |
-          if [ -f ./gradlew ]; then
-            ./gradlew assembleRelease --stacktrace
-          else
-            echo "ERROR: Gradle wrapper gradlew not found"
-            exit 1
-          fi
+      if [ ! -f ./gradle/wrapper/gradle-wrapper.jar ]; then
+        echo "ERROR: gradle-wrapper.jar not found"
+        exit 1
+      fi
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: SPD-Chaos-Forge-APK
-          path: |
-            **/build/outputs/apk/**/*.apk
-          if-no-files-found: error
-          retention-days: 14
+      chmod +x ./gradlew
+      ./gradlew --version
+
+  - name: Build Android APK
+    run: |
+      ./gradlew assembleRelease --stacktrace
+
+  - name: Find APK
+    run: |
+      find . -type f -name "*.apk" \
+        -path "*/build/outputs/apk/*" \
+        -print
+
+  - name: Upload APK
+    uses: actions/upload-artifact@v4
+    with:
+      name: SPD-Chaos-Forge-APK
+      path: '**/build/outputs/apk/**/*.apk'
+      if-no-files-found: error
+      retention-days: 14

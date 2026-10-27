@@ -884,6 +884,16 @@ public class GameScene extends PixelScene {
 		}
 
 		super.update();
+		// Chaos Pixel Dungeon: update hero light position.
+        if (hero != null) {
+        NoosaScript.setDynamicLight(
+        hero.x + hero.width() / 2f,
+        hero.y + hero.height() / 2f,
+        160f,
+        0.65f,
+        0.35f
+            );
+        }
 
 		if (notifyDelay > 0) notifyDelay -= Game.elapsed;
 

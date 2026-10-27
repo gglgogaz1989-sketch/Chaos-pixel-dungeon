@@ -84,6 +84,7 @@ import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 import com.watabou.utils.Reflection;
+import com.shatteredpixel.shatteredpixeldungeon.Challenges;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -436,16 +437,20 @@ abstract public class Weapon extends KindOfWeapon {
 		//does not affect levelgen
 		Random.pushGenerator(Random.Long());
 
-			//30% chance to be cursed
-			//10% chance to be enchanted
-			float effectRoll = Random.Float();
-			if (effectRoll < 0.3f * ParchmentScrap.curseChanceMultiplier()) {
-				enchant(Enchantment.randomCurse());
-				cursed = true;
-			} else if (effectRoll >= 1f - (0.1f * ParchmentScrap.enchantChanceMultiplier())){
-				enchant();
-			}
+			// Curse chance depends on the active challenge.
+float effectRoll = Random.Float();
 
+float curseChance = Dungeon.isChallenged(Challenges.CURSED_WEAPONS)
+        ? 0.8f
+        : 0.3f * ParchmentScrap.curseChanceMultiplier();
+
+        // 10% chance to be enchanted.
+    if (effectRoll < curseChance) {
+      enchant(Enchantment.randomCurse());
+      cursed = true;
+    } else if (effectRoll >= 1f - (0.1f * ParchmentScrap.enchantChanceMultiplier())) {
+      enchant();
+  }
 		Random.popGenerator();
 
 		return this;

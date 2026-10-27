@@ -56,7 +56,7 @@ public class PoisonParticle extends PixelParticle {
 		
 		lifespan = 0.6f;
 		
-		acc.set( 0, +30 );
+		acc.set( 0, +60 );
 	}
 	
 	public void resetMissile( float x, float y ) {

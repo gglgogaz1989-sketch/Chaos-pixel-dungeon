@@ -221,35 +221,35 @@ public class Generator {
 	public enum Category {
 		TRINKET ( 0, 0, Trinket.class),
 
-		WEAPON	( 2, 2, MeleeWeapon.class),
+		WEAPON	( 5, 5, MeleeWeapon.class),
 		WEP_T1	( 0, 0, MeleeWeapon.class),
 		WEP_T2	( 0, 0, MeleeWeapon.class),
 		WEP_T3	( 0, 0, MeleeWeapon.class),
 		WEP_T4	( 0, 0, MeleeWeapon.class),
 		WEP_T5	( 0, 0, MeleeWeapon.class),
 		
-		ARMOR	( 2, 1, Armor.class ),
+		ARMOR	( 5, 1, Armor.class ),
 		
-		MISSILE ( 1, 2, MissileWeapon.class ),
+		MISSILE ( 3, 2, MissileWeapon.class ),
 		MIS_T1  ( 0, 0, MissileWeapon.class ),
 		MIS_T2  ( 0, 0, MissileWeapon.class ),
 		MIS_T3  ( 0, 0, MissileWeapon.class ),
 		MIS_T4  ( 0, 0, MissileWeapon.class ),
 		MIS_T5  ( 0, 0, MissileWeapon.class ),
 		
-		WAND	( 1, 9, Wand.class ),
-		RING	( 1, 0, Ring.class ),
-		ARTIFACT( 0, 5, Artifact.class),
+		WAND	( 3, 9, Wand.class ),
+		RING	( 5, 0, Ring.class ),
+		ARTIFACT( 3, 1, Artifact.class),
 		
-		FOOD	( 4, 0, Food.class ),
+		FOOD	( 7, 0, Food.class ),
 		
-		POTION	( 15, 8, Potion.class ),
-		SEED	( 1, 1, Plant.Seed.class ),
+		POTION	( 25, 8, Potion.class ),
+		SEED	( 5, 1, Plant.Seed.class ),
 		
-		SCROLL	( 8, 8, Scroll.class ),
-		STONE   ( 4, 1, Runestone.class),
+		SCROLL	( 20, 8, Scroll.class ),
+		STONE   ( 10, 1, Runestone.class),
 		
-		GOLD	( 15, 10,   Gold.class );
+		GOLD	( 55, 10,   Gold.class );
 		
 		public Class<?>[] classes;
 

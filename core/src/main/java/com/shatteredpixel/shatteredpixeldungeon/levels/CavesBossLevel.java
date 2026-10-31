@@ -86,7 +86,7 @@ public class CavesBossLevel extends Level {
 				Music.INSTANCE.play(Assets.Music.CAVES_BOSS, true);
 			}
 		//if wall isn't broken
-		} else if (map[14 + 13*width()] == Terrain.CUSTOM_DECO){
+		} else if (map[26 + 23*width()] == Terrain.CUSTOM_DECO){
 			Music.INSTANCE.end();
 		} else {
 			Music.INSTANCE.playTracks(CavesLevel.CAVES_TRACK_LIST, CavesLevel.CAVES_TRACK_CHANCES, false);
@@ -103,8 +103,8 @@ public class CavesBossLevel extends Level {
 		return Assets.Environment.WATER_CAVES;
 	}
 
-	private static int WIDTH = 33;
-	private static int HEIGHT = 42;
+	private static int WIDTH = 63;
+	private static int HEIGHT = 72;
 
 	public static Rect diggableArea = new Rect(2, 11, 31, 40);
 	public static Rect mainArena = new Rect(5, 14, 28, 37);

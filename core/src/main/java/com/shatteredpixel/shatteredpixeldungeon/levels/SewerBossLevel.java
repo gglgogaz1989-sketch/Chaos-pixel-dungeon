@@ -105,9 +105,9 @@ public class SewerBossLevel extends SewerLevel {
 	
 	@Override
 	protected int standardRooms(boolean forceMax) {
-		if (forceMax) return 3;
+		if (forceMax) return 15;
 		//2 to 3, average 2.5
-		return 2+Random.chances(new float[]{1, 1});
+		return 6+Random.chances(new float[]{5, 6});
 	}
 	
 	protected Builder builder(){

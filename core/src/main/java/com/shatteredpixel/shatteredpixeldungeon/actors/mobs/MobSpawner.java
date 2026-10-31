@@ -75,7 +75,7 @@ public class MobSpawner extends Actor {
 			case 1: default:
 				//4x rat, 1x snake
 				return new ArrayList<>(Arrays.asList(
-						Rat.class, Rat.class, Rat.class,Rat.class,
+						Rat.class, Rat.class, Rat.class, Rat.class, Rat.class, Rat.class, Rat.class, Rat.class,
 						Snake.class));
 			case 2:
 				//2x rat, 2x snake, 2x gnoll
@@ -220,17 +220,17 @@ public class MobSpawner extends Actor {
 			default:
 				return;
 			case 4:
-				if (Random.Float() < 0.025f) rotation.add(Thief.class);
+				if (Random.Float() < 0.055f) rotation.add(Thief.class);
 				return;
 
 			// Prison
 			case 9:
-				if (Random.Float() < 0.025f) rotation.add(Bat.class);
+				if (Random.Float() < 0.045f) rotation.add(Bat.class);
 				return;
 
 			// Caves
 			case 14:
-				if (Random.Float() < 0.025f) rotation.add(Ghoul.class);
+				if (Random.Float() < 0.035f) rotation.add(Ghoul.class);
 				return;
 
 			// City
@@ -242,7 +242,7 @@ public class MobSpawner extends Actor {
 
 	//switches out regular mobs for their alt versions when appropriate
 	private static void swapMobAlts(ArrayList<Class<?extends Mob>> rotation) {
-		float altChance = 1 / 50f * RatSkull.exoticChanceMultiplier();
+		float altChance = 1 / 40f * RatSkull.exoticChanceMultiplier();
 		for (int i = 0; i < rotation.size(); i++) {
 			if (Random.Float() < altChance) {
 				Class<? extends Mob> cl = rotation.get(i);

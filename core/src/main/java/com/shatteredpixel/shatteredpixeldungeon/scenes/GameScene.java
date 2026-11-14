@@ -856,7 +856,7 @@ public class GameScene extends PixelScene {
 
 	//the actor thread processes at a maximum of 60 times a second
 	//this caps the speed of resting for higher refresh rate displays
-	private float notifyDelay = 1/60f;
+	private float notifyDelay = 1/240f;
 
 	public static boolean updateItemDisplays = false;
 
@@ -884,16 +884,6 @@ public class GameScene extends PixelScene {
 		}
 
 		super.update();
-		// Chaos Pixel Dungeon: update hero light position.
-        if (hero != null) {
-        NoosaScript.setDynamicLight(
-        hero.x + hero.width() / 5f,
-        hero.y + hero.height() / 25f,
-        110f,
-        0.35f,
-        0.25f
-            );
-        }
 
 		if (notifyDelay > 0) notifyDelay -= Game.elapsed;
 
@@ -1603,7 +1593,7 @@ public class GameScene extends PixelScene {
 		restart.alpha(0);
 		restart.camera = uiCamera;
 		float offset = Camera.main.centerOffset.y;
-		restart.setSize(Math.max(80, restart.reqWidth()), 20);
+		restart.setSize(Math.max(120, restart.reqWidth()), 10);
 		restart.setPos(
 				align(uiCamera, (restart.camera.width - restart.width()) / 2),
 				align(uiCamera, (restart.camera.height - restart.height()) / 2 + 8 - offset)
@@ -1625,7 +1615,7 @@ public class GameScene extends PixelScene {
 		menu.icon(Icons.get(Icons.PREFS));
 		menu.alpha(0);
 		menu.camera = uiCamera;
-		menu.setSize(Math.max(80, menu.reqWidth()), 20);
+		menu.setSize(Math.max(150, menu.reqWidth()), 10);
 		menu.setPos(
 				align(uiCamera, (menu.camera.width - menu.width()) / 2),
 				restart.bottom() + 2

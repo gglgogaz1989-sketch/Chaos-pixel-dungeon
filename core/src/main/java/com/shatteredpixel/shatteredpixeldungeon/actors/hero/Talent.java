@@ -215,7 +215,7 @@ public enum Talent {
 		public boolean delayedDetach = false;
 	};
 	public static class ProtectiveShadowsTracker extends Buff {
-		float barrierInc = 0.5f;
+		float barrierInc = 0.8f;
 
 		@Override
 		public boolean act() {
@@ -223,7 +223,7 @@ public enum Talent {
 			if (((Hero)target).hasTalent(Talent.PROTECTIVE_SHADOWS) && target.invisible > 0){
 				Barrier barrier = Buff.affect(target, Barrier.class);
 				if (barrier.shielding() < 1 + 2*((Hero)target).pointsInTalent(Talent.PROTECTIVE_SHADOWS)) {
-					barrierInc += 0.5f * ((Hero) target).pointsInTalent(Talent.PROTECTIVE_SHADOWS);
+					barrierInc += 0.8f * ((Hero) target).pointsInTalent(Talent.PROTECTIVE_SHADOWS);
 				}
 				if (barrierInc >= 1){
 					barrierInc = 0;

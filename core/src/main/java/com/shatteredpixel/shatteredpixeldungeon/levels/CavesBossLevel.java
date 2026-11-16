@@ -86,7 +86,7 @@ public class CavesBossLevel extends Level {
 				Music.INSTANCE.play(Assets.Music.CAVES_BOSS, true);
 			}
 		//if wall isn't broken
-		} else if (map[26 + 23*width()] == Terrain.CUSTOM_DECO){
+		} else if (map[52 + 46*width()] == Terrain.CUSTOM_DECO){
 			Music.INSTANCE.end();
 		} else {
 			Music.INSTANCE.playTracks(CavesLevel.CAVES_TRACK_LIST, CavesLevel.CAVES_TRACK_CHANCES, false);

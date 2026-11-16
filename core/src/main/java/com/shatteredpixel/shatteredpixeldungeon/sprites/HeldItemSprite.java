@@ -1,22 +1,22 @@
+
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
 import com.shatteredpixel.shatteredpixeldungeon.items.Item;
 import com.watabou.utils.PointF;
 
 /**
- * Displays an item next to the hero and rotates it
- * around the hero toward the selected target.
+ * Displays an item beside the hero.
+ * The item follows the hero and rotates toward the aiming target.
  */
 public class HeldItemSprite extends ItemSprite {
 
     private final HeroSprite hero;
 
-    private float radius = 11f;
+    private float radius = 12f;
+    private float direction = -(float) Math.PI / 2f;
 
     private float targetX;
     private float targetY;
-
-    private float direction = -(float) Math.PI / 2f;
 
     private boolean hasTarget = false;
 
@@ -24,19 +24,21 @@ public class HeldItemSprite extends ItemSprite {
         super(item);
 
         if (hero == null) {
-            throw new IllegalArgumentException("HeroSprite cannot be null");
+            throw new IllegalArgumentException(
+                    "HeroSprite cannot be null"
+            );
         }
 
         this.hero = hero;
 
-        // Rotate the item around its own center.
+        // Set the rotation origin to the center of the item.
         originToCenter();
 
         updatePosition();
     }
 
     /**
-     * Sets the target position in screen coordinates.
+     * Aim the item toward a screen position.
      */
     public void aimAt(PointF target) {
         if (target == null) {
@@ -47,19 +49,18 @@ public class HeldItemSprite extends ItemSprite {
     }
 
     /**
-     * Sets the target position in screen coordinates.
+     * Aim the item toward screen coordinates.
      */
     public void aimAt(float x, float y) {
         targetX = x;
         targetY = y;
-
         hasTarget = true;
 
         updatePosition();
     }
 
     /**
-     * Changes the distance between the item and the hero.
+     * Set the distance between the item and the hero.
      */
     public void setRadius(float radius) {
         if (Float.isNaN(radius) || Float.isInfinite(radius)) {
@@ -67,25 +68,28 @@ public class HeldItemSprite extends ItemSprite {
         }
 
         this.radius = Math.max(0f, radius);
-
         updatePosition();
     }
 
     /**
-     * Updates the position and rotation of the item.
+     * Update item position and rotation.
      */
     private void updatePosition() {
 
-        // Center of the hero.
+        if (hero == null) {
+            return;
+        }
+
+        // Hero center.
         float heroCenterX = hero.x + hero.width() * 0.5f;
         float heroCenterY = hero.y + hero.height() * 0.5f;
 
+        // Calculate aiming direction.
         if (hasTarget) {
 
             float dx = targetX - heroCenterX;
             float dy = targetY - heroCenterY;
 
-            // Avoid unstable direction when target equals hero center.
             if (dx * dx + dy * dy > 0.0001f) {
                 direction = (float) Math.atan2(dy, dx);
             }
@@ -98,12 +102,13 @@ public class HeldItemSprite extends ItemSprite {
         float itemCenterY =
                 heroCenterY + (float) Math.sin(direction) * radius;
 
-        point(
+        // Apply position.
+        point(new PointF(
                 itemCenterX - width() * 0.5f,
                 itemCenterY - height() * 0.5f
-        );
+        ));
 
-        // Rotate the item toward the target.
+        // Rotate around the item's center.
         angle = (float) Math.toDegrees(direction);
     }
 
@@ -111,7 +116,7 @@ public class HeldItemSprite extends ItemSprite {
     public void update() {
         super.update();
 
-        // Follow the hero even when the hero moves.
+        // Keep following the hero.
         updatePosition();
     }
 }

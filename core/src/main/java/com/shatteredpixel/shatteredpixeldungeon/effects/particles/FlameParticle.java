@@ -42,7 +42,7 @@ public class FlameParticle extends PixelParticle.Shrinking {
 		super();
 		
 		color( 0xEE7722 );
-		lifespan = 0.6f;
+		lifespan = 0.3f;
 		
 		acc.set( 0, -80 );
 	}
@@ -55,7 +55,7 @@ public class FlameParticle extends PixelParticle.Shrinking {
 		
 		left = lifespan;
 		
-		size = 4;
+		size = 6;
 		speed.set( 0 );
 	}
 	

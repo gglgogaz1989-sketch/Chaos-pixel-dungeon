@@ -112,7 +112,7 @@ public class MiningLevel extends CavesLevel {
 			initRooms.add(s);
 		}
 
-		rooms = 2;
+		rooms = 8;
 		for (int i = 0; i < rooms; i++){
 			initRooms.add(new MineSecretRoom());
 		}

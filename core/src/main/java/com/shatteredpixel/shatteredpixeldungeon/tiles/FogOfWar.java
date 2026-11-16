@@ -76,7 +76,7 @@ public class FogOfWar extends Image {
 	private volatile ArrayList<Rect> updating;
 
 	//should be divisible by 2
-	private static final int PIX_PER_TILE = 1;
+	private static final int PIX_PER_TILE = 2;
 
 	/*
 	TODO currently the center of each fox pixel is aligned with the inside of a cell

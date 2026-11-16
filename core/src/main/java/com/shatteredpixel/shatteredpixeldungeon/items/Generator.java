@@ -237,11 +237,11 @@ public class Generator {
 		MIS_T4  ( 0, 0, MissileWeapon.class ),
 		MIS_T5  ( 0, 0, MissileWeapon.class ),
 		
-		WAND	( 3, 9, Wand.class ),
+		WAND	( 10, 10, Wand.class ),
 		RING	( 5, 0, Ring.class ),
 		ARTIFACT( 3, 1, Artifact.class),
 		
-		FOOD	( 50, 0, Food.class ),
+		FOOD	( 100, 0, Food.class ),
 		
 		POTION	( 25, 8, Potion.class ),
 		SEED	( 5, 1, Plant.Seed.class ),

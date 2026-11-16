@@ -86,7 +86,7 @@ public class SewerLevel extends RegularLevel {
 	
 	@Override
 	protected int standardRooms(boolean forceMax) {
-		if (forceMax) return 30;
+		if (forceMax) return 100;
 		//4 to 6, average 5
 		return 9+Random.chances(new float[]{6, 11, 7});
 	}
@@ -101,7 +101,7 @@ public class SewerLevel extends RegularLevel {
 	@Override
 	protected Painter painter() {
 		return new SewerPainter()
-				.setWater(feeling == Feeling.WATER ? 0.85f : 0.30f, 5)
+				.setWater(feeling == Feeling.WATER ? 0.50f : 0.10f, 1)
 				.setGrass(feeling == Feeling.GRASS ? 0.80f : 0.20f, 4)
 				.setTraps(nTraps(), trapClasses(), trapChances());
 	}

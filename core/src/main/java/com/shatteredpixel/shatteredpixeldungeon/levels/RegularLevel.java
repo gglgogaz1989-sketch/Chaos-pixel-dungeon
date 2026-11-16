@@ -129,7 +129,7 @@ public abstract class RegularLevel extends Level {
 		//force max standard rooms and multiple by 1.5x for large levels
 		int standards = standardRooms(feeling == Feeling.LARGE);
 		if (feeling == Feeling.LARGE){
-			standards = (int)Math.ceil(standards * 1.5f);
+			standards = (int)Math.ceil(standards * 5.1f);
 		}
 		for (int i = 0; i < standards; i++) {
 			StandardRoom s;
